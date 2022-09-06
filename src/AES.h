@@ -46,6 +46,8 @@ class AES {
 
   void CheckLength(unsigned int len);
 
+  void PadInput(unsigned char in[], unsigned int inLen);
+
   void KeyExpansion(const unsigned char key[], unsigned char w[]);
 
   void EncryptBlock(const unsigned char in[], unsigned char out[],

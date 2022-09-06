@@ -145,6 +145,21 @@ void AES::CheckLength(unsigned int len) {
   }
 }
 
+void AES::PadInput(unsigned char in[], unsigned int inLen) {
+  unsigned int padLength = inLen % blockBytesLen;
+  unsigned int newLength = inLen + padLength;
+  unsigned char *paddedInput = new unsigned char[newLength];
+
+  for (unsigned int i = 0; i < inLen; i++) {
+    paddedInput[i] = in[i];
+  }
+  for (unsigned int i = inLen; i < newLength; i++) {
+    paddedInput[i] = '\0';
+  }
+  delete[] in;
+  in = paddedInput;
+}
+
 void AES::EncryptBlock(const unsigned char in[], unsigned char out[],
                        unsigned char *roundKeys) {
   unsigned char **state = new unsigned char *[4];

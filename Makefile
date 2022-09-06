@@ -1,21 +1,23 @@
 FLAGS = -Wall -Wextra
 
+UTILS = ./src/utils.cpp
+
 build_all: clean build_test build_debug build_profile build_release build_speed_test
 
 build_test:
 	g++ $(FLAGS) -g -pthread ./src/AES.cpp ./tests/tests.cpp /usr/lib/libgtest.a -o bin/test
 
 build_debug:
-	g++ $(FLAGS) -g ./src/AES.cpp ./dev/main.cpp -o bin/debug
+	g++ $(FLAGS) -g ./src/AES.cpp ./dev/main.cpp $(UTILS) -o bin/debug
 
 build_profile:
-	g++ $(FLAGS) -pg ./src/AES.cpp ./dev/main.cpp -o bin/profile
+	g++ $(FLAGS) -pg ./src/AES.cpp ./dev/main.cpp $(UTILS) -o bin/profile
 
 build_speed_test:
-	g++ $(FLAGS) -O2 ./src/AES.cpp ./speedtest/main.cpp -o bin/speedtest
+	g++ $(FLAGS) -O2 ./src/AES.cpp ./speedtest/main.cpp $(UTILS) -o bin/speedtest
 
 build_release:
-	g++ $(FLAGS) -O2 ./src/AES.cpp ./dev/main.cpp -o bin/release
+	g++ $(FLAGS) -O2 ./src/AES.cpp ./dev/main.cpp $(UTILS) -o bin/release
 
 
 

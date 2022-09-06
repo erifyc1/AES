@@ -2,6 +2,7 @@
 #include <fstream>
 #include <istream>
 #include <ostream>
+#include <vector>
 
 using namespace std;
 struct utils {

@@ -45,13 +45,10 @@ int main(int argc, char** argv)
 			AES aes(AESKeyLength::AES_256);
 			vector<unsigned char> c = aes.EncryptECB(m, key);
 
-			// convert to hex string and write to file
-			// stringstream ss;
-			string ciphertext; //= ss.str();
+			// convert to string and write to file
+			string ciphertext; 
 			for (unsigned char val : c) {
 				ciphertext += val;
-				// ss << hex << (int)val;
-				// cout << val << ", " << (int)val << endl;
 			}
 			utils::writeFile("./dev/files/ciphertext.aes256", ciphertext);
 			cout << "Successfully encrypted " << filename << endl;
@@ -64,8 +61,6 @@ int main(int argc, char** argv)
 			vector<unsigned char> c;
 			for (unsigned int i = 0; i < ciphertext.length(); i += 1) {
 				c.push_back((unsigned char)ciphertext[i]);
-				// c.push_back((unsigned char)stoi(ciphertext.substr(i, 2), nullptr, 16));
-				// cout << ciphertext.substr(i, 2) << ", " << stoi(ciphertext.substr(i, 2), nullptr, 16) << endl;
 			}
 
 			// run decrypt

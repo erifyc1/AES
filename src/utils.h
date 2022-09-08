@@ -2,6 +2,7 @@
 #include <fstream>
 #include <istream>
 #include <ostream>
+#include <sstream>
 #include <vector>
 
 using namespace std;

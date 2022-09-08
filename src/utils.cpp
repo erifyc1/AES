@@ -11,7 +11,7 @@ string utils::readFile(const string filename) {
     // read in entries
     while (ifs.good()) {
         getline(ifs, line);
-        message += line;
+        message += '\n' + line;
     }
     return message;
 }

@@ -10,9 +10,11 @@ int main(int argc, char** argv)
 {
 	if (argc != 4) {
 		cout << "Usage:\n./bin/debug <encrypt/decrypt> <filename> <32-char key>" << endl;
+		return 1;
 	}
-	else if (((argv[1][0] == 'e' && argv[1][1] == 'n') | (argv[1][0] == 'd' && argv[1][1] == 'e')) && argv[1][2] == 'c' && argv[1][3] == 'r' && argv[1][4] == 'y' && argv[1][5] == 'p' && argv[1][6] == 't') {
-		bool encrypt = argv[1][0] == 'e' && argv[1][1] == 'n';
+	string op = argv[1];
+	if (op == "encrypt" || op == "decrypt") {
+		bool encrypt = op == "encrypt";
 		// extract filename
 		string filename;
 		for (unsigned int i = 0; argv[2][i] != '\0'; i++) {
